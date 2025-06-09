@@ -1,12 +1,15 @@
+-- 仅在 jproperties 文件类型下设置
 vim.bo.commentstring = '# %s'
 vim.bo.filetype = 'jproperties'
 
--- 设置保存后钩子
+-- 保存后自动恢复可读内容
 vim.api.nvim_create_autocmd('BufWritePost', {
   buffer = 0,
+  group = vim.api.nvim_create_augroup('JPropertiesBufWritePost', { clear = false }),
   callback = function()
-    require('jproperties').post_save()
-  end
+    require('jproperties').post_save(0)
+  end,
+  desc = 'jproperties: 恢复可读内容'
 })
 
 -- 本地键映射
