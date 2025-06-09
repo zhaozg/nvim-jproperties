@@ -1,0 +1,44 @@
+{
+  "neodev": {
+    "library": {
+      "enabled": true,
+      "plugins": true
+    }
+  },
+  "overseer": {
+    "templates": {
+      "user.luacheck" : {
+      }
+    }
+  },
+  "neoconf": {
+    "plugins": {
+      "lua_ls": {
+        "enabled": true
+      }
+    }
+  },
+  "codecompanion": {
+    "prompt_library" : {
+      "nvim-plugin-dev": {
+        "strategy": "chat",
+        "description": "基于 nvim, LuaJIT 2.1 进行原生插件开发",
+        "opts": {
+          "is_slash_cmd": true,
+          "auto_submit": false,
+          "short_name": "plugindev"
+        },
+        "prompts": [
+          {
+            "role": "system",
+            "content": "You are an experienced plugit developer with LuaJIT2.1 and Neovim"
+          },
+          {
+            "role": "user",
+            "content": "请解释原因， 提出改进建议， 并给出代码示例"
+          }
+        ]
+      }
+    }
+  }
+}

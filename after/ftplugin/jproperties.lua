@@ -1,6 +1,5 @@
 -- 仅在 jproperties 文件类型下设置
 vim.bo.commentstring = '# %s'
-vim.bo.filetype = 'jproperties'
 
 -- 保存后自动恢复可读内容
 vim.api.nvim_create_autocmd('BufWritePost', {
