@@ -52,6 +52,10 @@ function M.setup()
       vim.notify('已转换为中文显示', vim.log.levels.INFO)
     end
   end, {})
+
+  vim.api.nvim_create_user_command('JPropertiesToggle', function(opts)
+    vim.b.JPropertiesDisable = not vim.b.JPropertiesDisable
+  end, {})
 end
 
 return M

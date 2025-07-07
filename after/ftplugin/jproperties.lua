@@ -1,11 +1,15 @@
 -- 仅在 jproperties 文件类型下设置
 vim.bo.commentstring = '# %s'
 
+-- Set default value if not set
+vim.b.JPropertiesDisable = false
+
 -- 保存后自动恢复可读内容
 vim.api.nvim_create_autocmd('BufWritePost', {
   buffer = 0,
   group = vim.api.nvim_create_augroup('JPropertiesBufWritePost', { clear = false }),
   callback = function()
+    if vim.b.JPropertiesDisable then return end
     require('jproperties').post_save(0)
   end,
   desc = 'jproperties: 恢复可读内容'

@@ -22,6 +22,7 @@ function M.setup()
   vim.api.nvim_create_autocmd({ 'BufReadPost' }, {
     pattern = '*.properties',
     callback = function(args)
+      if vim.b.JPropertiesDisable then return end
       M.process_file(args.buf)
     end
   })
@@ -30,6 +31,7 @@ function M.setup()
   vim.api.nvim_create_autocmd('BufWritePre', {
     pattern = '*.properties',
     callback = function(args)
+      if vim.b.JPropertiesDisable then return end
       M.prepare_save(args.buf)
     end
   })
@@ -38,6 +40,7 @@ function M.setup()
   vim.api.nvim_create_autocmd('BufWritePost', {
     pattern = '*.properties',
     callback = function(args)
+      if vim.b.JPropertiesDisable then return end
       M.post_save(args.buf)
     end
   })
